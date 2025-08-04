@@ -1,72 +1,67 @@
-import './index.css';
+import React from 'react';
+import subscriptions from './data/subscriptions';
 
-function App() {
+const App = () => {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div className="max-w-5xl mx-auto p-4">
+      {/* Hero Section */}
+      <div className="text-center my-10">
+        <h1 className="text-4xl font-bold text-blue-700">👋 Welcome to ShoperStop.store</h1>
+        <p className="mt-2 text-lg text-gray-600">India’s Trusted Digital Deals Store</p>
+      </div>
 
-      {/* Header */}
-      <header className="bg-white shadow p-4">
-        <h1 className="text-3xl font-bold text-center">👋 Welcome to ShoperStop.store</h1>
-        <p className="text-center text-sm text-gray-600">
-          India’s Trusted Digital Deals Store
-        </p>
-      </header>
-
-      {/* Main Content */}
-      <main className="p-6">
-
-        {/* Services We Provide */}
-        <section className="bg-white p-6 rounded-xl shadow mb-6">
-          <h2 className="text-2xl font-semibold mb-4 text-center">🎯 Our Digital Services</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li><strong>OTT Subscriptions:</strong> Netflix, Amazon Prime, Disney+ Hotstar & more</li>
-            <li><strong>Music Platforms:</strong> Spotify Premium, YouTube Music</li>
-            <li><strong>VPN Services:</strong> NordVPN, Surfshark, ExpressVPN</li>
-            <li><strong>AI Tools:</strong> ChatGPT Plus, Canva Pro, Grammarly Premium</li>
-            <li><strong>Telegram Premium:</strong> Fast delivery via username or mobile</li>
-            <li><strong>Combo Deals:</strong> Save more with bundled offers</li>
-            <li><strong>Custom Orders:</strong> Need something else? Message us on Telegram!</li>
-          </ul>
-        </section>
-
-        {/* Customer Reviews */}
-        <section className="my-10 text-center">
-          <h3 className="text-lg font-bold mb-4">🌟 What Our Customers Say</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white shadow p-4 rounded-xl text-left">
-              <p className="text-gray-800 italic">"Bought Netflix + Prime combo and got it within 5 minutes. Super fast and genuine!"</p>
-              <p className="mt-2 text-sm text-gray-500">— Rahul, Mumbai</p>
+      {/* Services Offered */}
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-4">🚀 Our Bestselling Subscriptions</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {subscriptions.map((item, idx) => (
+            <div key={idx} className="bg-white shadow-md rounded-2xl p-4 border border-gray-200">
+              <h3 className="text-xl font-bold text-purple-600">{item.name}</h3>
+              <p className="text-sm text-gray-500">{item.duration}</p>
+              <p className="mt-2">
+                <span className="line-through text-gray-400">{item.originalPrice}</span>
+                <span className="text-green-600 font-semibold ml-2">{item.offerPrice}</span>
+              </p>
+              <p className="text-sm text-gray-600 mt-1">{item.note}</p>
+              <button className="mt-4 bg-blue-600 text-white py-1 px-4 rounded-lg hover:bg-blue-700">
+                📩 Message on Telegram
+              </button>
             </div>
-            <div className="bg-white shadow p-4 rounded-xl text-left">
-              <p className="text-gray-800 italic">"Very helpful and quick delivery. Telegram Premium working perfectly!"</p>
-              <p className="mt-2 text-sm text-gray-500">— Ayesha, Delhi</p>
-            </div>
-            <div className="bg-white shadow p-4 rounded-xl text-left">
-              <p className="text-gray-800 italic">"This is the 3rd time I'm buying. Trusted service for OTT deals. Thanks!"</p>
-              <p className="mt-2 text-sm text-gray-500">— Karan, Bangalore</p>
-            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Fake Reviews */}
+      <section className="my-10">
+        <h2 className="text-2xl font-semibold mb-4">🧾 Customer Reviews</h2>
+        <div className="space-y-4">
+          <div className="bg-white shadow-sm p-4 border rounded-lg">
+            <p className="font-medium text-gray-700">"Fast delivery and genuine Netflix account. Will buy again!"</p>
+            <p className="text-sm text-gray-500">– Aakash S.</p>
           </div>
-        </section>
+          <div className="bg-white shadow-sm p-4 border rounded-lg">
+            <p className="font-medium text-gray-700">"Telegram Premium mila instantly. Thanks!"</p>
+            <p className="text-sm text-gray-500">– Sneha R.</p>
+          </div>
+          <div className="bg-white shadow-sm p-4 border rounded-lg">
+            <p className="font-medium text-gray-700">"Amazon Prime at such low price is unbeatable."</p>
+            <p className="text-sm text-gray-500">– Rahul M.</p>
+          </div>
+        </div>
 
-        {/* Selling Proofs Button */}
-        <section className="my-10 text-center">
+        <div className="text-center mt-6">
           <a
             href="https://t.me/shoperstopvouches"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
+            className="text-blue-600 font-medium hover:underline"
           >
-            📲 Check Selling Proofs on Telegram
+            🔍 Check Real Proofs on Telegram
           </a>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white shadow text-center p-4 mt-6">
-        <p className="text-sm text-gray-500">© 2025 ShoperStop.store | All rights reserved.</p>
-      </footer>
+        </div>
+      </section>
     </div>
   );
-}
+};
 
 export default App;
